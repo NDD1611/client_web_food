@@ -1,0 +1,298 @@
+@keyframes addRight_Left {
+  from {
+    left: 100%; }
+  to {
+    left: 0%; } }
+@keyframes rmRight_Left {
+  from {
+    left: 0%; }
+  to {
+    left: -100%; } }
+@keyframes addLeft_Right {
+  from {
+    left: -100%; }
+  to {
+    left: 0%; } }
+@keyframes rmLeft_Right {
+  from {
+    left: 0%; }
+  to {
+    left: 100%; } }
+#about {
+  padding-top: 80px; }
+  #about h1 {
+    font-size: 52px; }
+  #about h2 {
+    font-size: 42px; }
+  #about .head {
+    width: 100%;
+    height: 240px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-image: url("../../image/background-image.jpg"); }
+    #about .head .head-content {
+      text-align: center; }
+    #about .head h1 {
+      margin-bottom: 10px; }
+    #about .head p {
+      font-size: 15px; }
+  #about p {
+    color: #808080; }
+  #about .wel {
+    display: flex;
+    flex: 1 1;
+    margin: 20px 50px 0 50px; }
+    #about .wel p {
+      margin: 10px; }
+    #about .wel .welcome {
+      font-family: "Norican", cursive;
+      font-weight: 400;
+      color: var(--main-color); }
+    #about .wel > div {
+      padding: 10px; }
+    #about .wel .wel_left {
+      flex: 1; }
+      #about .wel .wel_left div {
+        height: 50px;
+        margin-top: 20px; }
+        #about .wel .wel_left div a {
+          border-radius: 10px;
+          font-weight: 600;
+          padding: 10px 20px 10px 20px;
+          text-decoration: none;
+          color: #000;
+          background-color: var(--main-color); }
+    #about .wel .wel_right {
+      display: flex;
+      justify-content: center;
+      flex: 1; }
+      #about .wel .wel_right img {
+        width: 100%; }
+  #about .our_Quanlity {
+    margin: 20px 50px 0 50px; }
+    #about .our_Quanlity .container {
+      display: flex; }
+      #about .our_Quanlity .container > div {
+        flex: 1;
+        padding: 10px; }
+      #about .our_Quanlity .container .change_font {
+        font-family: "Norican", cursive;
+        color: var(--main-color);
+        font-weight: 400; }
+      #about .our_Quanlity .container .OQ_Content {
+        padding: 100px 200px 100px 0; }
+      #about .our_Quanlity .container .OQ_Content_left {
+        padding: 100px 0 100px 200px; }
+      #about .our_Quanlity .container .OQ_Img {
+        display: flex;
+        justify-content: center;
+        align-items: center; }
+        #about .our_Quanlity .container .OQ_Img img {
+          height: 80%;
+          width: 100%; }
+    #about .our_Quanlity .order {
+      height: 100px; }
+    #about .our_Quanlity a {
+      display: block;
+      text-decoration: none;
+      color: #000;
+      width: 140px;
+      margin-top: 20px;
+      border-radius: 10px;
+      padding: 10px 20px;
+      font-weight: 600;
+      background-color: var(--main-color); }
+  #about .slide_show {
+    position: relative;
+    height: 600px;
+    padding-bottom: 20px;
+    background-image: url("https://st3.depositphotos.com/12549166/31995/i/1600/depositphotos_319950260-stock-photo-group-of-students-friends-eat.jpg");
+    background-repeat: no-repeat; }
+    #about .slide_show .opaci {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: #000;
+      opacity: 0.6; }
+    #about .slide_show .content {
+      position: absolute;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      left: 0; }
+      #about .slide_show .content .element-rating {
+        z-index: 999;
+        width: 70%;
+        display: block;
+        color: azure; }
+        #about .slide_show .content .element-rating .img {
+          display: flex;
+          justify-content: center;
+          width: 100%;
+          height: 150px;
+          margin-bottom: 20px; }
+          #about .slide_show .content .element-rating .img img {
+            border-radius: 50%;
+            height: 100%; }
+        #about .slide_show .content .element-rating .star {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+          font-size: 30px; }
+          #about .slide_show .content .element-rating .star i {
+            padding: 0 5px; }
+        #about .slide_show .content .element-rating h2 {
+          font-weight: 400;
+          font-size: 40px;
+          text-align: center; }
+        #about .slide_show .content .element-rating h3 {
+          padding-top: 20px;
+          font-weight: 700;
+          font-size: 25px;
+          text-align: center; }
+        #about .slide_show .content .element-rating h4 {
+          font-weight: 700;
+          font-size: 18px;
+          text-align: center; }
+    #about .slide_show .btn_left {
+      position: absolute;
+      top: 45%;
+      left: 20px;
+      color: #ffffff42;
+      z-index: 9999; }
+      #about .slide_show .btn_left i {
+        width: 100%; }
+      #about .slide_show .btn_left:hover {
+        color: azure;
+        cursor: pointer; }
+    #about .slide_show .btn_right {
+      position: absolute;
+      top: 45%;
+      right: 20px;
+      color: #ffffff42;
+      z-index: 9999; }
+      #about .slide_show .btn_right:hover {
+        color: azure;
+        cursor: pointer; }
+    #about .slide_show .star-1 {
+      color: var(--main-color); }
+    #about .slide_show .star-2 {
+      color: var(--main-color); }
+    #about .slide_show .star-3 {
+      color: var(--main-color); }
+    #about .slide_show .star-4 {
+      color: var(--main-color); }
+    #about .slide_show .star-5 {
+      color: var(--main-color); }
+    #about .slide_show .content-1 {
+      display: none; }
+    #about .slide_show .content-2 {
+      display: none; }
+    #about .slide_show .content-3 {
+      display: none; }
+    #about .slide_show .content-4 {
+      display: none; }
+    #about .slide_show .btn {
+      position: absolute;
+      bottom: 50px;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      z-index: 99; }
+      #about .slide_show .btn button {
+        margin: 0 5px;
+        padding: 0 10px;
+        height: 5px;
+        border-radius: 15px;
+        background-color: #ffc222;
+        opacity: 0.5;
+        border: none; }
+        #about .slide_show .btn button:hover {
+          cursor: pointer; }
+  #about .chef {
+    margin: 50px 50px 0 50px; }
+    #about .chef h1 {
+      font-family: "Norican", cursive;
+      color: var(--main-color);
+      text-align: center;
+      font-weight: 400; }
+    #about .chef h2 {
+      text-align: center;
+      font-size: 30px; }
+    #about .chef .container {
+      display: flex; }
+      #about .chef .container .item {
+        flex: 1;
+        padding: 15px; }
+    #about .chef .image {
+      position: relative; }
+      #about .chef .image img {
+        width: 100%; }
+      #about .chef .image .hover-bg {
+        position: absolute;
+        top: 0;
+        background-color: #000;
+        opacity: 0;
+        width: 100%;
+        height: 99%;
+        z-index: 10; }
+        #about .chef .image .hover-bg:hover {
+          opacity: 0.3; }
+      #about .chef .image div {
+        position: absolute;
+        text-align: center;
+        bottom: -5px;
+        width: 100%;
+        z-index: 99; }
+      #about .chef .image span {
+        background-color: var(--main-color);
+        padding: 5px 10px;
+        border-radius: 3px; }
+    #about .chef .content h2 {
+      font-size: 18px;
+      padding: 40px 0 10px; }
+      #about .chef .content h2:hover {
+        color: var(--main-color); }
+    #about .chef .content p {
+      text-align: center; }
+    #about .chef .content .icon {
+      text-align: center;
+      padding: 10px 0; }
+      #about .chef .content .icon i {
+        padding: 5px; }
+  #about .foot {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url("https://demo2wpopal.b-cdn.net/poco/wp-content/uploads/2020/09/bg3-h3-3.jpg");
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    height: 540px;
+    margin-top: 30px; }
+    #about .foot .content h1 {
+      text-align: center;
+      font-family: "Norican", cursive;
+      color: var(--main-color);
+      font-size: 30px; }
+    #about .foot .content h2 {
+      text-align: center;
+      padding: 10px 0; }
+    #about .foot .content p {
+      text-align: center; }
+    #about .foot .content div {
+      padding-top: 40px;
+      text-align: center; }
+    #about .foot .content span {
+      background-color: var(--main-color);
+      padding: 15px 25px;
+      border-radius: 5px;
+      font-weight: 600; }
+      #about .foot .content span:hover {
+        color: #fff;
+        background-color: #eeac00; }
+
+/*# sourceMappingURL=About.css.map */

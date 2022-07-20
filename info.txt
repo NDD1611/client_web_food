@@ -1,0 +1,5 @@
+cd /mnt/e/workspace/react/Client_React_S/
+
+localhost - heroku
+
+pages/Shop.js       L.68

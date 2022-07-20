@@ -1,0 +1,54 @@
+li {
+    list-style-type: none;
+    width: 50%;
+}
+li > div {
+    margin: 15px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+li > div > div {
+    display: flex;
+    margin: 15px;
+    background-color: #fff9e9;
+    border-radius: 20px;;
+}
+li .image{
+    flex: 1;
+    width: 100%;
+}
+li .image > div {
+    width: 100%;
+
+}
+li .image img {
+    width: 100%;
+}
+li .content{
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding-left: 20px;
+}
+li .content h1{
+    font-size: 20px;
+    font-weight: 700;
+}
+li .content h1:hover{
+    color: var(--main-color);
+    cursor: pointer;
+}
+li .content p{
+    font-size: 15px;
+    margin: 10px 0;
+    color: #ccc;
+}
+li .content p:hover{
+    cursor: pointer;
+    color: var(--main-color);
+}
+li .content h2{
+    font-size: 25px;
+    color: var(--main-color);
+}
