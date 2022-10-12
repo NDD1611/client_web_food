@@ -1,0 +1,24 @@
+.header-admin {
+    background-color: var(--main-color);
+    height: 40px;
+
+
+    ul {
+        display: flex;
+        list-style-type: none;
+        gap: 20px;
+        height: 100%;
+        align-items: center;
+
+        li {
+            height: 100%;
+            display: flex;
+            align-items: center;
+
+            &:hover {
+                background-color: rgb(197, 204, 9);
+            }
+        }
+
+    }
+}

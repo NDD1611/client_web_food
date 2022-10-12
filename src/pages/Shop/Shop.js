@@ -3,8 +3,9 @@ import { useState, useEffect } from "react"
 
 import SpItem from "../../component/SpItem";
 import { getListItemShop } from '../../service/getDataService';
-
 import './Shop.scss'
+import Header from "../Header/Header.js"
+import Footer from "../Footer/Footer.js"
 
 function handleClickCategories(type, filter, callback) {
     const valueCategories = ["All", "Burgers", "Drinks", "Pasta", "Pizza"]
@@ -33,17 +34,6 @@ function Shop() {//component
     const [filter, setFilter] = useState("All")
     const [page, setPage] = useState(1) // page de luu so page hien tai cua
     const [dataDB, setDataDB] = useState([{}]); // dataDB la du lieu lay ve tu API
-    // useEffect(() => {
-    //     //fetch('https://server-react-s.herokuapp.com/api/shop/All')
-    //     fetch('/api/shop/All')
-    //         .then(res => res.json())
-    //         .then(data => {
-    //             setDataDB(data);
-    //         })
-    //         .catch((error) => {
-    //             console.log(error)
-    //         })
-    // }, [])
 
     useEffect(() => {
         async function getAllData() {
@@ -139,21 +129,41 @@ function Shop() {//component
             }
         })
         const countAllProductElement = document.querySelector("#shop .container .filter .filter-container .product-categories .count-all-product")
+        if (countAllProductElement) {
+            countAllProductElement.innerText = `(${countAllProduct})`
+        }
+
         const countBurgerElement = document.querySelector("#shop .container .filter .filter-container .product-categories .count-burgers")
+        if (countBurgerElement) {
+            countBurgerElement.innerText = `(${countBurger})`
+        }
+
         const countDrinkElement = document.querySelector("#shop .container .filter .filter-container .product-categories .count-drinks")
+        if (countDrinkElement) {
+            countDrinkElement.innerText = `(${countDrink})`
+        }
+
         const countPastaElement = document.querySelector("#shop .container .filter .filter-container .product-categories .count-pasta")
+        if (countPastaElement) {
+            countPastaElement.innerText = `(${countPasta})`
+        }
+
         const countPizzaElement = document.querySelector("#shop .container .filter .filter-container .product-categories .count-pizza")
-        countAllProductElement.innerText = `(${countAllProduct})`
-        countBurgerElement.innerText = `(${countBurger})`
-        countDrinkElement.innerText = `(${countDrink})`
-        countPastaElement.innerText = `(${countPasta})`
-        countPizzaElement.innerText = `(${countPizza})`
+        if (countPizzaElement) {
+            countPizzaElement.innerText = `(${countPizza})`
+        }
 
         //if(filter === "All"){
         const divElement = document.querySelector(`#shop .container .filter .filter-container .product-categories .${filter}`)
+        if (divElement) {
+            divElement.style = "background-color: var(--main-color); opacity: 1 !important; color: #000 !important; border: 1px solid var(--main-color) !important;"
+        }
+
         const divChildElement = document.querySelector(`#shop .container .filter .filter-container .product-categories .${filter} > div`)
-        divElement.style = "background-color: var(--main-color); opacity: 1 !important; color: #000 !important; border: 1px solid var(--main-color) !important;"
-        divChildElement.style = "border: none;"
+        if (divChildElement) {
+            divChildElement.style = "border: none;"
+        }
+
         let indexPreFilter = -1
         valueCategories.map((value, index) => {
             if (filter === value) {
@@ -162,10 +172,15 @@ function Shop() {//component
         })
         if (indexPreFilter >= 0) {
             const preFilterElement = document.querySelector(`#shop .container .filter .filter-container .product-categories .${valueCategories[indexPreFilter]} > div`)
-            preFilterElement.style = "border: none;"
+            if (preFilterElement) {
+                preFilterElement.style = "border: none;"
+            }
         }
         //}
-
+        // if (dataDB.length != 1) {
+        //     console.log(" co du lieuj", dataDB)
+        //     axios.post("/data", dataDB)
+        // }
     })
 
     useEffect(() => {
@@ -175,121 +190,125 @@ function Shop() {//component
     }, [filter])
 
     return (
-        <main id="shop">
-            <div className="head">
-                <div className="head-content">
-                    <h1>Shop</h1>
-                    <p>
-                        Home
-                        <i className="fas fa-angle-right"></i>
-                        Shop
-                    </p>
+        <>
+            <Header />
+            <main id="shop">
+                <div className="head">
+                    <div className="head-content">
+                        <h1>Shop</h1>
+                        <p>
+                            Home
+                            <i className="fas fa-angle-right"></i>
+                            Shop
+                        </p>
+                    </div>
                 </div>
-            </div>
-            <div className="container">
-                <div className="product">
-                    <ul>
-                        {data.map((item) => {
-                            return (
-                                <SpItem
-                                    item={item}
-                                />)
-                        })}
-                    </ul>
-                    <div className="nav_page">
-                        <div className="previous" onClick={() => {
-                            const pageElement = document.querySelector(`#shop .product .nav_page .page_${page}`)
-                            pageElement.style = "background-color: #fff; opacity: 0.5;"
-                            setPage((pre => pre - 1))
-                        }}>
-                            <i className="fa-solid fa-angle-left"></i>
-                            Previous
-                        </div>
-                        {
-                            pageArray.map((number, index) => {
+                <div className="container">
+                    <div className="product">
+                        <ul>
+                            {data.map((item) => {
                                 return (
-                                    <div key={`${index}`} id={number} className={`page_${number}`} onClick={(e) => {
-                                        const pageElement = document.querySelector(`#shop .product .nav_page .page_${page}`)
-                                        pageElement.style.backgroundColor = "#fff"
-                                        setPage(Number(e.target.id))
-                                    }}>{number}</div>
-                                )
-                            })
-                        }
-                        <div className="next" onClick={() => {
-                            const pageElement = document.querySelector(`#shop .product .nav_page .page_${page}`)
-                            pageElement.style = "background-color: #fff; opacity: 0.5;"
-                            setPage((pre => pre + 1))
-                        }}>
-                            Next
-                            <i className="fa-solid fa-angle-right"></i>
-                        </div>
-                    </div>
-                </div>
-                <div className="filter">
-                    <div className="filter-container">
-                        <div className="categories">Categories</div>
-                        <div className="product-categories">
-                            <div className="All" onClick={() => {
-                                handleClickCategories("All", filter, setFilter);
+                                    <SpItem
+                                        item={item}
+                                    />)
+                            })}
+                        </ul>
+                        <div className="nav_page">
+                            <div className="previous" onClick={() => {
+                                const pageElement = document.querySelector(`#shop .product .nav_page .page_${page}`)
+                                pageElement.style = "background-color: #fff; opacity: 0.5;"
+                                setPage((pre => pre - 1))
                             }}>
-                                <div>
-                                    <i className="fa-solid fa-shop"></i>
-                                    <span>
-                                        All-Product
-                                    </span>
-                                    <span className="count-all count-all-product">(10)</span>
-                                </div>
+                                <i className="fa-solid fa-angle-left"></i>
+                                Previous
                             </div>
-                            <div className="Burgers" onClick={() => {
-                                handleClickCategories("Burgers", filter, setFilter);
+                            {
+                                pageArray.map((number, index) => {
+                                    return (
+                                        <div key={`${index}`} id={number} className={`page_${number}`} onClick={(e) => {
+                                            const pageElement = document.querySelector(`#shop .product .nav_page .page_${page}`)
+                                            pageElement.style.backgroundColor = "#fff"
+                                            setPage(Number(e.target.id))
+                                        }}>{number}</div>
+                                    )
+                                })
+                            }
+                            <div className="next" onClick={() => {
+                                const pageElement = document.querySelector(`#shop .product .nav_page .page_${page}`)
+                                pageElement.style = "background-color: #fff; opacity: 0.5;"
+                                setPage((pre => pre + 1))
                             }}>
-                                <div>
-                                    <i className="fa-solid fa-burger"></i>
-                                    <span>
-                                        Burgers
-                                    </span>
-                                    <span className="count-all count-burgers">(10)</span>
-                                </div>
-                            </div>
-                            <div className="Drinks" onClick={() => {
-                                handleClickCategories("Drinks", filter, setFilter);
-                            }}>
-                                <div>
-                                    <i className="fa-solid fa-martini-glass"></i>
-                                    <span>
-                                        Drinks
-                                    </span>
-                                    <span className="count-all count-drinks">(10)</span>
-                                </div>
-                            </div>
-                            <div className="Pasta" onClick={() => {
-                                handleClickCategories("Pasta", filter, setFilter);
-                            }}>
-                                <div>
-                                    <i className="fa-solid fa-cheese"></i>
-                                    <span>
-                                        Pasta
-                                    </span>
-                                    <span className="count-all count-pasta">(10)</span>
-                                </div>
-                            </div>
-                            <div className="Pizza" onClick={() => {
-                                handleClickCategories("Pizza", filter, setFilter);
-                            }}>
-                                <div className="no-border">
-                                    <i className="fa-solid fa-pizza-slice"></i>
-                                    <span>
-                                        Pizza
-                                    </span>
-                                    <span className="count-all count-pizza">(10)</span>
-                                </div>
+                                Next
+                                <i className="fa-solid fa-angle-right"></i>
                             </div>
                         </div>
                     </div>
+                    <div className="filter">
+                        <div className="filter-container">
+                            <div className="categories">Categories</div>
+                            <div className="product-categories">
+                                <div className="All" onClick={() => {
+                                    handleClickCategories("All", filter, setFilter);
+                                }}>
+                                    <div>
+                                        <i className="fa-solid fa-shop"></i>
+                                        <span>
+                                            All-Product
+                                        </span>
+                                        <span className="count-all count-all-product">(10)</span>
+                                    </div>
+                                </div>
+                                <div className="Burgers" onClick={() => {
+                                    handleClickCategories("Burgers", filter, setFilter);
+                                }}>
+                                    <div>
+                                        <i className="fa-solid fa-burger"></i>
+                                        <span>
+                                            Burgers
+                                        </span>
+                                        <span className="count-all count-burgers">(10)</span>
+                                    </div>
+                                </div>
+                                <div className="Drinks" onClick={() => {
+                                    handleClickCategories("Drinks", filter, setFilter);
+                                }}>
+                                    <div>
+                                        <i className="fa-solid fa-martini-glass"></i>
+                                        <span>
+                                            Drinks
+                                        </span>
+                                        <span className="count-all count-drinks">(10)</span>
+                                    </div>
+                                </div>
+                                <div className="Pasta" onClick={() => {
+                                    handleClickCategories("Pasta", filter, setFilter);
+                                }}>
+                                    <div>
+                                        <i className="fa-solid fa-cheese"></i>
+                                        <span>
+                                            Pasta
+                                        </span>
+                                        <span className="count-all count-pasta">(10)</span>
+                                    </div>
+                                </div>
+                                <div className="Pizza" onClick={() => {
+                                    handleClickCategories("Pizza", filter, setFilter);
+                                }}>
+                                    <div className="no-border">
+                                        <i className="fa-solid fa-pizza-slice"></i>
+                                        <span>
+                                            Pizza
+                                        </span>
+                                        <span className="count-all count-pizza">(10)</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </main>
+            </main>
+            <Footer />
+        </>
     )
 }
 export default Shop;

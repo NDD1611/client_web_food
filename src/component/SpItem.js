@@ -5,10 +5,10 @@ import { handleClickBuy, addCart, handleMouseEnter, handleMouseLeave } from "./p
 function SpItem({ item }) {//component
     return (
         <li
-            key={`${item.id}`}
-            id={item.id}
-            onMouseLeave={() => { handleMouseLeave(item.id) }}
-            onMouseEnter={() => { handleMouseEnter(item.id) }}
+            key={`${item.masp}`}
+            id={item.masp}
+            onMouseLeave={() => { handleMouseLeave(item.masp) }}
+            onMouseEnter={() => { handleMouseEnter(item.masp) }}
         >
             <div className="sp-main">
                 <div>
@@ -32,4 +32,4 @@ function SpItem({ item }) {//component
     )
 }
 
-export default SpItem
+export default SpItem;

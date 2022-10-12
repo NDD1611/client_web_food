@@ -10,6 +10,8 @@ import { useState, useEffect, useRef } from 'react'
 import SpItem from "../../component/SpItem"
 import SpLeftItem from "../../component/SpLeftItem"
 import './Home.scss'
+import Header from "../Header/Header.js"
+import Footer from "../Footer/Footer.js"
 
 
 function HeadHome() {
@@ -44,7 +46,7 @@ function HeadHome() {
 function ItemMenuHome({ sp }) {
 
     return (
-        <div key={sp.id}>
+        <div key={`${sp.masp}`}>
             <div className="image">
                 <img className="shape_1" src={require("../../image/shape_home_menu.png")} />
                 <img src={sp.img} />
@@ -62,7 +64,9 @@ function MenuHome() {
             <div className="sp">
                 {
                     menuHome.map((sp) => {
-                        return <ItemMenuHome sp={sp} />
+                        return <ItemMenuHome
+                            sp={sp}
+                        />
                     })
                 }
             </div>
@@ -181,7 +185,9 @@ function Dersert() {
 function Popular() {
     function handleSetType(e) {
         const element = document.querySelector(`#home #popular .tabs .${type}`)
-        element.style.backgroundColor = "#fff";
+        if (element) {
+            element.style.backgroundColor = "#fff";
+        }
         setType(e.target.className)
     }
     const [type, setType] = useState('PIZZA');
@@ -204,7 +210,9 @@ function Popular() {
 
     useEffect(() => {
         const element = document.querySelector(`#home #popular .tabs .${type}`)
-        element.style.backgroundColor = "var(--main-color)";
+        if (element) {
+            element.style.backgroundColor = "var(--main-color)";
+        }
     }, [type])
 
     return (
@@ -292,14 +300,18 @@ function Home() {
     //     window.scrollTo(0,0)
     // }, [])
     return (
-        <div id="home">
-            <HeadHome />
-            <MenuHome />
-            <SectionHome />
-            <Popular />
-            <Banner />
-            <TopRecipe />
-        </div>
+        <>
+            <Header />
+            <div id="home">
+                <HeadHome />
+                <MenuHome />
+                <SectionHome />
+                <Popular />
+                <Banner />
+                <TopRecipe />
+            </div>
+            <Footer />
+        </>
     )
 }
 // https://demo2wpopal.b-cdn.net/poco/wp-content/uploads/2020/09/h1_shape-8.png

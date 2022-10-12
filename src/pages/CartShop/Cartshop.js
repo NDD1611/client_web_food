@@ -3,19 +3,21 @@
 import { useEffect, useState } from 'react'
 // import './cartshop.css'
 import './CartShop.scss'
+import Header from "../Header/Header.js"
+import Footer from "../Footer/Footer.js"
 
 
 function setValueObj(data) {
     for (let item of data) {
-        if (typeof localStorage[item.id] != "undefined") {
+        if (typeof localStorage[item.masp] != "undefined") {
             item.order = true;
-            item.quantity = Number(localStorage.getItem(item.id));
+            item.quantity = Number(localStorage.getItem(item.masp));
             item.subTotal = item.quantity * item.price;
         }
     }
 }
 function subTotal(sp) {
-    const id = sp.id;
+    const id = sp.masp;
     var sl = document.querySelector(`#${id} .quantity input`).value;
     var totalPrice = sl * sp.price;
     const subTotal = document.querySelector(`#${id} .subtotal`);
@@ -32,8 +34,8 @@ function calTotal(data) {
 
 function handleChange(e, sp, data) {
     data.map((item) => {
-        if (item.id === sp.id) {
-            item.quantity = e.target.value;
+        if (item.masp === sp.masp) {
+            item.quantity = parseInt(e.target.value);
         }
     })
     subTotal(sp);
@@ -48,7 +50,7 @@ function handleDelItem(id, data) {
 
     let vitri
     data.map((sp, index) => {
-        if (sp.id == id) {
+        if (sp.masp == id) {
             vitri = index
         }
     })
@@ -61,7 +63,7 @@ function handleDelItem(id, data) {
 }
 function CartItem({ sp, data }) { //component
     return (
-        <tr key={`${sp.id}`} id={sp.id}>
+        <tr key={`${sp.masp}`} id={sp.masp}>
             <td className="image">
                 <img src={sp.img} alt="" />
             </td>
@@ -72,7 +74,7 @@ function CartItem({ sp, data }) { //component
             </td>
             <td className="subtotal">{new Intl.NumberFormat('de-DE', { style: 'currency', currency: 'USD' }).format(sp.quantity * sp.price)}</td>
             <td className="x-btn-js">
-                <i className="far fa-times-circle" onClick={() => { handleDelItem(sp.id, data) }}></i>
+                <i className="far fa-times-circle" onClick={() => { handleDelItem(sp.masp, data) }}></i>
             </td>
         </tr>
     )
@@ -94,44 +96,48 @@ function Cartshop() {   //component
         }
     })
     return (
-        <main id="cart">
-            <div className="head">
-                <h1>Cart</h1>
-                <p>
-                    Home
-                    <i className="fas fa-angle-right"></i>
-                    Cart
-                </p>
-            </div>
+        <>
+            <Header />
+            <main id="cart">
+                <div className="head">
+                    <h1>Cart</h1>
+                    <p>
+                        Home
+                        <i className="fas fa-angle-right"></i>
+                        Cart
+                    </p>
+                </div>
 
-            <table id={'table'}>
-                <thead>
-                    <tr>
-                        <td className="image"></td>
-                        <td className="name">Product</td>
-                        <td className="price">Price</td>
-                        <td className="quantity">Quantity</td>
-                        <td className="subtotal">Subtotal</td>
-                        <td className="x-btn-js"></td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {
-                        data && data.map(sp => <CartItem
-                            sp={sp}
-                            data={data}
-                        />
-                        )
-                    }
-                </tbody>
-            </table>
-            <div id="total">
-                <h1>Total:
-                    <span id="add-text" style={{ padding: 20 }}>
-                    </span>
-                </h1>
-            </div>
-        </main>
+                <table id={'table'}>
+                    <thead>
+                        <tr>
+                            <td className="image"></td>
+                            <td className="name">Product</td>
+                            <td className="price">Price</td>
+                            <td className="quantity">Quantity</td>
+                            <td className="subtotal">Subtotal</td>
+                            <td className="x-btn-js"></td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {
+                            data && data.map(sp => <CartItem
+                                sp={sp}
+                                data={data}
+                            />
+                            )
+                        }
+                    </tbody>
+                </table>
+                <div id="total">
+                    <h1>Total:
+                        <span id="add-text" style={{ padding: 20 }}>
+                        </span>
+                    </h1>
+                </div>
+            </main>
+            <Footer />
+        </>
     )
 }
 export default Cartshop;
